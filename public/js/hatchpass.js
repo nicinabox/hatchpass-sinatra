@@ -1,15 +1,3 @@
-var settings = {
-	"key"		:  location.pathname.substr(1),
-	"symbols"	: true,
-	"caps"		: true,
-	"length"	: 10,
-	"algorithm"	: "default",
-	"r_master"	: true,	
-	"r_settings": false,
-	"r_url"		: true	
-}
-
-
 $(document).ready(function() {
   $('#master').val(localStorage.hp_master).trigger('focus_empty')
   if ($('#master').val() != '') {
