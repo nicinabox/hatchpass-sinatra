@@ -11,6 +11,11 @@ var settings = {
 
 
 $(document).ready(function() {
+  $('#master').val(localStorage.hp_master).trigger('focus_empty')
+  if ($('#master').val() != '') {
+    $('#master').next('.clearinput').fadeIn(50)
+  }
+  
   // Set settings
   $('#settings input, #settings select').each(function(index) {
     var id = $(this).attr('id')  
@@ -44,13 +49,37 @@ $(document).ready(function() {
         })
       }
     }
-    
   })
   
   // Trigger panes
   $('.button').click(function() {
-    pane = '.'+$(this).attr('href').substr(1)
-    $(pane).slideToggle('fast')
+    panel = '.'+$(this).attr('href').substr(1)
+    if (!$(panel).hasClass('active')) {
+      $('.panel').slideUp('fast').removeClass('active')
+    }
+    $(panel).slideToggle('fast').toggleClass('active')
     return false
   })
+  
+  // Remember master
+  $('#master').change(function(){
+    if ($("#r_master").is(':checked') && $('#master').val() != "") {
+      localStorage.hp_master = $('#master').val()
+      console.log("Master saved")
+    }
+	})
+	$('#master, #domain').keyup(function(){
+    if ($(this).val() == "") {
+      $('#secure').val('')
+      $(this).next('.clearinput').fadeOut(50)
+    } else {
+      $(this).next('.clearinput').fadeIn(50)
+    }
+  })
+  $('.clearinput').click(function() {
+    $(this).prev('input').val('').focus();
+    $(this).fadeOut(50);
+    $('#secure').val('');
+    return false;
+  });
 })
