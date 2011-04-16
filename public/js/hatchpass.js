@@ -1,6 +1,6 @@
 var settings = {
 	"key"		:  location.pathname.substr(1),
-	"symbols"	: 10,
+	"symbols"	: true,
 	"caps"		: true,
 	"length"	: 10,
 	"algorithm"	: "default",
@@ -8,12 +8,27 @@ var settings = {
 	"r_settings": false,
 	"r_url"		: true	
 }
+
+
 $(document).ready(function() {
-  $(window).resize(function () { 
-    $('#window-size').html(window.innerWidth)
+  // Set settings
+  $('#settings input, #settings select').each(function(index) {
+    var id = $(this).attr('id')  
+    switch (typeof settings[id]) {
+      case "boolean":
+        $('#'+id).attr('checked', settings[id])
+        break
+      case "number":
+        $('#'+id).val(settings[id])
+        break
+      case "string":
+        $('#'+id).val(settings[id])
+        break  
+      default:
+        console.log(id)
+        break
+    } 
   })
-  
-  $('#master').focus();
   
   $('#hatch').keyup(function(e){
     if (e.keyCode == 13 || e.keyCode == 9) {
@@ -35,9 +50,7 @@ $(document).ready(function() {
   // Trigger panes
   $('.button').click(function() {
     pane = '.'+$(this).attr('href').substr(1)
-    
     $(pane).slideToggle('fast')
-    
     return false
-  });
+  })
 })
