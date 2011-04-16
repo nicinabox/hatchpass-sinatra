@@ -31,6 +31,27 @@ a {
   } 
 }
 
+#header {
+  position: absolute;
+  bottom: 0;
+  padding: 10px 0;
+  width: 100%;
+  @include linear-gradient(color-stops(#ddd, #aaa));
+  @include box-shadow(#aaa, 0, -2px, 5px);
+  text-shadow: 0 1px 1px #eaeaea;
+  a {
+    text-decoration: none;
+  }
+  h1 {
+    font-weight: bold;
+    padding: 0 30px;
+    font-size: 18px;
+    a {
+      color: black;
+    }
+  }
+}
+
 .toolbar {
   width: 230px;
   margin: 0 auto;
@@ -49,7 +70,7 @@ a {
 #main {
   position: relative;
   width: 350px;
-  margin: 0 auto;
+  margin: 20px auto;
   #nav {
     z-index: 2;
     position: absolute;
