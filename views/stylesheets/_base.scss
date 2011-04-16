@@ -7,3 +7,22 @@
 @mixin amp {
   font-family: Baskerville,"Goudy Old Style","Palatino","Book Antiqua",serif;
 }
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-button {
+  
+}
+::-webkit-scrollbar-track {
+  background: #eee;
+}
+::-webkit-scrollbar-track-piece {
+  background: transparent;
+  @include border-radius(6px); 
+}
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+  @include border-radius(6px);
+}

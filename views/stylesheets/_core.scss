@@ -46,6 +46,34 @@ a {
   } 
 }
 
+#main {
+  position: relative;
+  width: 350px;
+  margin: 0 auto;
+  #nav {
+    z-index: 2;
+    position: absolute;
+    right: 0px;
+    .button {
+      @include border-radius(2px);
+      width: 32px;
+      height: 32px;
+      display: block;
+      text-indent: -9999px;
+    }
+    #my_url {
+      background: image-url('girl.png') no-repeat center;
+    }
+    #my_settings {
+      background: image-url('gear.png') no-repeat center;
+    }
+  }
+  #hatch {
+    position: relative;
+    z-index: 5;
+  } 
+}
+
 #hatch {
   width: 240px;
   background: white;
@@ -135,29 +163,34 @@ input#secure {
   .info {
     display: none; } }
 
-#settings {
-  form {
-    max-width: 540px;
-    margin: 0 auto; }
-  ul {
-    float: left;
-    width: 140px;
-    min-height: 70px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    margin-right: 20px;
-    padding-right: 20px;
-    border-right: 1px dotted #666;
-    &.last {
-      margin-right: 0;
-      padding-right: 0;
-      border: none; } } }
 
-#myUrl {
-  text-align: center;
-  ul {
-    list-style: none; } }
+.panel {
+  #settings {
+    max-width: 540px;
+    margin: 0 auto; 
+    ul {
+      float: left;
+      width: 140px;
+      min-height: 70px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      margin-right: 20px;
+      padding-right: 20px;
+      border-right: 1px dotted #666;
+      &.last {
+        margin-right: 0;
+        padding-right: 0;
+        border: none; 
+      }  
+    } 
+  }
+  #my_url {
+    text-align: center;
+    ul {
+      list-style: none; } }
+  
+}
 
 /* HELP
 ----------------------------------*/

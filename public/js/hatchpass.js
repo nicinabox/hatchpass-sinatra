@@ -1,5 +1,5 @@
 var settings = {
-	"key"		:  null,
+	"key"		:  location.pathname.substr(1),
 	"symbols"	: 10,
 	"caps"		: true,
 	"length"	: 10,
@@ -11,11 +11,9 @@ var settings = {
 $(document).ready(function() {
   $(window).resize(function () { 
     $('#window-size').html(window.innerWidth)
-  });
+  })
   
   $('#master').focus();
-  
-  settings.key = $('#key').val();
   
   $('#hatch').keyup(function(e){
     if (e.keyCode == 13 || e.keyCode == 9) {
@@ -33,4 +31,13 @@ $(document).ready(function() {
     }
     
   })
+  
+  // Trigger panes
+  $('.button').click(function() {
+    pane = '.'+$(this).attr('href').substr(1)
+    
+    $(pane).slideToggle('fast')
+    
+    return false
+  });
 })

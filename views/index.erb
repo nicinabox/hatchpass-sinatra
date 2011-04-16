@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Hatchpass</title>
-  <link rel="icon" type="image/png" href="/images/favicon.png">	
-  <link rel="stylesheet" href="/stylesheets/screen.css">
-</head>
-<body>
-  <span id="window-size"></span>
-  <div class="toolbar">
-      <h1><a id="logo" href="/<%= params[:key] %>" title=""><img src="/images/logo.png" alt="HatchPass"/></a></h1>
-      
-      <a class="button slideup leftButton" id="myUrlBtn" href="#myUrl">My Url</a>
-      <a class="button flip" id="settingsBtn" href="#settings">Settings</a>
-  </div>
+<%= erb :_header %>
+<section id="main">
+  <nav id="nav">
+    <a class="button" title="My url" id="my_url" href="#my_url">My Url</a>
+    <a class="button" title="Settings" id="my_settings" href="#settings">Settings</a>
+  </nav>
   <form method="post" action="/<%= params[:key] %>" id="hatch">
     <ul>
       <li>
@@ -35,7 +25,5 @@
     </ul>
   </form>
   <small id="tagline"><strong>Esc</strong> + <strong>h</strong> to see shortcuts</small>
-  
-  <%= erb :_javascripts %>
-</body>
-</html>
+</section>
+<%= erb :_footer %>
