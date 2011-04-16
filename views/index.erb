@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hatchpass</title>
+  <link rel="icon" type="image/png" href="/images/favicon.png">	
+  <link rel="stylesheet" href="/stylesheets/screen.css">
+</head>
+<body>
+  <span id="window-size"></span>
+  <div class="toolbar">
+      <h1><a id="logo" href="/<%= params[:key] %>" title=""><img src="/images/logo.png" alt="HatchPass"/></a></h1>
+      
+      <a class="button slideup leftButton" id="myUrlBtn" href="#myUrl">My Url</a>
+      <a class="button flip" id="settingsBtn" href="#settings">Settings</a>
+  </div>
+  <form method="post" action="/<%= params[:key] %>" id="hatch">
+    <ul>
+      <li>
+        <input type="hidden" id="key" name="key" value="<%= params[:key] %>">
+        <label for="key">Master</label>
+        <input type="password" id="master" name="master" value="<%= params[:master] %>">
+        <a class="clearinput">&times;</a>
+      </li>
+      <li>
+        <label for="domain">Domain</label>
+        <input type="url" id="domain" name="domain" value="<%= params[:domain] %>">
+        <a class="clearinput">&times;</a>
+      </li>
+      <li>
+        <label for="secret">Secret</label>
+        <input type="text" id="secret" name="secret" value="<%= @secret %>">
+        <a class="clearinput">&times;</a>
+      </li>
+    </ul>
+  </form>
+  <small id="tagline"><strong>Esc</strong> + <strong>h</strong> to see shortcuts</small>
+  
+  <%= erb :_javascripts %>
+</body>
+</html>

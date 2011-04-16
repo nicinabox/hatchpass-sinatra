@@ -1,0 +1,9 @@
+@import 'compass/reset';
+@import 'compass/css3';
+
+@mixin neue {
+  font-family: "helvetica neue", Helvetica, arial, sans-serif;
+}
+@mixin amp {
+  font-family: Baskerville,"Goudy Old Style","Palatino","Book Antiqua",serif;
+}
