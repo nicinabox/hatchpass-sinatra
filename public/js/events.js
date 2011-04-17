@@ -40,9 +40,23 @@ $(function() {
           break
       } 
     })
+    $('#hatch').trigger('change')
   })
   
   // Update form
+  $('#hatch').bind('change',function(e){
+      var master = $('#master').val()
+      var domain = $('#domain').val()
+      if (master != '' && domain != '') {
+        $.post('/'+settings.key, {
+         master: master, 
+         domain: domain,
+         settings: settings
+         }, function(data){
+            $('#secret').val(data).select()
+        })
+      }
+  })
   
   // New Key
   $('#new_key').bind('click', function(event) {

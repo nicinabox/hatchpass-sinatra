@@ -22,25 +22,13 @@ $(document).ready(function() {
         break
     } 
   })
-  $('#settings').change(function() {
+  $('#settings').bind('change keyup', function(e) {
     $(this).trigger('temp_save_settings')
-  });
+    return false
+  })
   
   $('#save_key').trigger('save_key')
   
-  $('#hatch').change(function(e){
-      var master = $('#master').val()
-      var domain = $('#domain').val()
-      if (master != '' && domain != '') {
-        $.post('/'+settings.key, {
-         master: master, 
-         domain: domain,
-         settings: settings
-         }, function(data){
-            $('#secret').val(data).select()
-        })
-      }
-  })
   
   // Remember master
   $('#master').change(function(){
