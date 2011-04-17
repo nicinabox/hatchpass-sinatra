@@ -67,11 +67,15 @@ def create_password data
 end
 
 get '/create' do
-  params['settings'] = {
-    "symbols" => "true",
-    "caps"    => "true",
-    "length"  => "10"
-  }
+  unless params['settings']
+    params['settings'] = {
+      "symbols" => "true",
+      "caps"    => "true",
+      "length"  => "10"
+    }
+  end
+  
+  response['Access-Control-Allow-Origin'] = '*'
   create_password params
 end
 
