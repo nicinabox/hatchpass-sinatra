@@ -65,7 +65,7 @@ get "/:key?" do
   if params[:key]
     erb :index, :layout => :'layouts/layout'
   else
-    key = SHA1.hexdigest("#{Time.now.to_i}")[10...15]
+    key = SHA2.hexdigest("#{Time.now.to_i}")[0...5]
     redirect to("/#{key}")
   end
 end

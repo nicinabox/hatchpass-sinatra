@@ -38,8 +38,9 @@
   </div>
 
   <%= yield %>
-
-  <%= erb :_help %>
+  <% unless mobile? %>
+    <%= erb :_help %>
+  <% end %>
   <%= erb :_javascripts %>
 </body>
 </html>

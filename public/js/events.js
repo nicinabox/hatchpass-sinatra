@@ -42,7 +42,7 @@ $(function() {
       $(this).text('Save Key').data('saved', false)
     } else {
       localStorage.hp_key = settings.key
-      $(this).text('Forget Key: '+ settings.key).data('saved', true)
+      $(this).html('Forget Key: '+ settings.key).data('saved', true)
     }
   })
   
