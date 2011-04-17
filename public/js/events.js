@@ -38,12 +38,10 @@ $(function() {
   $('#save_key').bind('save_key', function(event) {
     if ($(this).data('saved')) { // Forget it
       localStorage.removeItem('hp_key')
-      $('.message').html('No saved key.')
       $(this).text('Save Key').data('saved', false)
     } else {
       localStorage.hp_key = settings.key
-      $('.message').html('Saved: '+settings.key)
-      $(this).text('Forget Key').data('saved', true)
+      $(this).text('Forget Key: '+ settings.key).data('saved', true)
     }
   })
   

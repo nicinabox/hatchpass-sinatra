@@ -260,8 +260,10 @@ input#secure {
     @include clearfix;
     .message {
       margin: 5px 0;
+      padding: 3px 10px;
     }
     nav {
+      text-align: center;
     }
   }
   
