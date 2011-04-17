@@ -64,16 +64,16 @@ $(function() {
 		    }
 		    break;
 		  case 83: // s
-		    $('#my_settings').trigger('click')
+		    if (!focused) $('#my_settings').trigger('click')
 		    break;
 		  case 85: // u
-		    $('#my_url').trigger('click')
+		    if (!focused) $('#my_url').trigger('click')
 		    break;
 		  case 68: // d
-		    $('#domain').select();
+		    if (!focused) $('#domain').select();
 		    break;
 		  case 77: // m
-		    $('#master').select();
+		    if (!focused) $('#master').select();
 		    break;
 		  case 191: case 72: // foward slash or h
 		    if (!focused) {
