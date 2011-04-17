@@ -1,4 +1,3 @@
-MBP.hideUrlBar()
 jQuery.expr[':'].focus = function( elem ) {
   return elem === document.activeElement && ( elem.type || elem.href );
 };

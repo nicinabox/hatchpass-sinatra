@@ -144,3 +144,7 @@ MBP.autogrow = function (element, lh) {
 };
  
 })(document);
+
+MBP.hideUrlBar();
+MBP.scaleFix();
+MBP.fastButton('a')
