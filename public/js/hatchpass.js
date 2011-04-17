@@ -47,7 +47,7 @@ $(document).ready(function() {
   $('.clearinput').click(function() {
     $(this).prev('input').val('').focus();
     $(this).fadeOut(50);
-    $('#secure').val('');
+    $('#secret').val('');
     return false;
   })
   

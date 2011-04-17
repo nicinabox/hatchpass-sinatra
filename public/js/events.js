@@ -4,7 +4,6 @@ jQuery.expr[':'].focus = function( elem ) {
 var key = localStorage.hp_key || location.pathname.substr(1)
 if ((settings = localStorage.hp_settings)) {
   settings = JSON.parse(settings)
-  console.log("Loaded saved settings")
 } else {
   var settings = {
   	"key"		:  key,

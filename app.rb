@@ -77,6 +77,5 @@ get "/:key?" do
 end
 
 post '/:key' do
-  p params
   @secret = create_password params
 end
