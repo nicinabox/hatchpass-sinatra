@@ -134,22 +134,27 @@ $(function() {
 		      $('.panel').trigger('hide')
   		    $('input').trigger('focus_empty')
 		    }
+		    $('#about').slideUp('fast');
 		    break;
 		  case 74: // j
 		    if (!focused) $('#my_settings').trigger('click')
+		    $('#about').slideUp('fast');
 		    break;
 		  case 75: // k
 		    if (!focused) $('#my_url').trigger('click')
+		    $('#about').slideUp('fast');
 		    break;
 		  case 68: // d
 		    if (!focused) $('#domain').select();
+		    $('#about').slideUp('fast');
 		    break;
 		  case 77: // m
 		    if (!focused) $('#master').select();
+		    $('#about').slideUp('fast');
 		    break;
 		  case 191: case 72: // foward slash or h
 		    if (!focused) {
-		      $('#help').fadeToggle('fast')
+		      $('#help').slideUp('fast')
 		    }
 		  default:
 		    break;
