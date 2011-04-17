@@ -47,18 +47,16 @@ def create_password data
   
   secret.each_with_index do |item, num|
     if item.match(/[a-zA-Z]/) # Letters
-        if data['settings']['caps'] && !this_upper
+        if data['settings']['caps'] == "true" && !this_upper
           this_upper = true
            secret[num] = item.match(/[a-zA-Z]/)[0].upcase
         else
           this_upper = false
         end
     else # Numbers
-      if data['settings']['symbols']
+      if data['settings']['symbols'] == "true"
         secret_idx = num + key_num / 3
-        sym_idx = nums + num + (key_num * nums) + (1 * num) # TODO: picking the right index
-        p secret
-        p "secret_idx: #{secret_idx}, sym_idx: #{sym_idx}"
+        sym_idx = nums + num + (key_num * nums) + (1 * num)
         unless secret[secret_idx].nil? or secret_idx < 0 or sym_idx < 0 or symbols[sym_idx].nil?
           secret[secret_idx] += symbols[sym_idx]
         end
@@ -79,5 +77,6 @@ get "/:key?" do
 end
 
 post '/:key' do
+  p params
   @secret = create_password params
 end

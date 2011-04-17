@@ -22,6 +22,10 @@ $(document).ready(function() {
         break
     } 
   })
+  $('#settings').change(function() {
+    $(this).trigger('temp_save_settings')
+  });
+  
   $('#save_key').trigger('save_key')
   
   $('#hatch').change(function(e){

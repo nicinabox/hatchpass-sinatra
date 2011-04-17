@@ -25,6 +25,25 @@ $(function() {
     console.log(window.innerWidth)
   })
   
+  // Saving settings
+  $('#settings').bind('temp_save_settings', function(event) {
+    $('#settings input, #settings select').each(function(index) {
+      var id = $(this).attr('id')  
+      var val = $(this).val()
+      var checked = $(this).is(':checked')
+      switch (typeof settings[id]) {
+        case "boolean":
+          settings[id] = checked
+          break
+        default:
+          settings[id] = val
+          break
+      } 
+    })
+  })
+  
+  // Update form
+  
   // New Key
   $('#new_key').bind('click', function(event) {
     localStorage.removeItem('hp_key')
@@ -38,9 +57,11 @@ $(function() {
   $('#save_key').bind('save_key', function(event) {
     if ($(this).data('saved')) { // Forget it
       localStorage.removeItem('hp_key')
+      settings.save_key = false
       $(this).text('Save Key').data('saved', false)
     } else {
       localStorage.hp_key = settings.key
+      settings.save_key = true
       $(this).html('Forget Key: '+ settings.key).data('saved', true)
     }
   })
