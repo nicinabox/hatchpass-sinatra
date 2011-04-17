@@ -2,15 +2,20 @@ jQuery.expr[':'].focus = function( elem ) {
   return elem === document.activeElement && ( elem.type || elem.href );
 };
 var key = localStorage.hp_key || location.pathname.substr(1)
-var settings = {
-	"key"		:  key,
-	"symbols"	: true,
-	"caps"		: true,
-	"length"	: 10,
-	"algorithm"	: "default",
-	"r_master"	: true,	
-	"r_settings": false,
-	"save_key": true
+if ((settings = localStorage.hp_settings)) {
+  settings = JSON.parse(settings)
+  console.log("Loaded saved settings")
+} else {
+  var settings = {
+  	"key"		:  key,
+  	"symbols"	: true,
+  	"caps"		: true,
+  	"length"	: 10,
+  	"algorithm"	: "default",
+  	"r_master"	: true,	
+  	"r_settings": false,
+  	"save_key": true
+  }
 }
 
 if (key != location.pathname.substr(1)) {
@@ -38,7 +43,17 @@ $(function() {
         default:
           settings[id] = val
           break
-      } 
+      }
+      if ($('#r_master').is(':checked')) {
+        localStorage.hp_master = $('#master').val()
+      } else {
+        localStorage.removeItem('hp_master')
+      }
+      if ($('#r_settings').is(':checked')) {
+        localStorage.hp_settings = JSON.stringify(settings)
+      } else {
+        localStorage.removeItem('hp_settings')
+      }
     })
     $('#hatch').trigger('change')
   })
