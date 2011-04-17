@@ -66,8 +66,13 @@ def create_password data
   secret.join[0...data['settings']['length'].to_i]           
 end
 
-get '/about' do
-  erb :about, :layout => :'layouts/layout'
+get '/create' do
+  params['settings'] = {
+    "symbols" => "true",
+    "caps"    => "true",
+    "length"  => "10"
+  }
+  create_password params
 end
 
 get "/:key?" do 
