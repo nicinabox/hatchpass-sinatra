@@ -216,9 +216,10 @@ input#secure {
   padding: 20px;
   display: none;
   form {
-    overflow: auto; }
+    @include clearfix;
+  }
   label {
-    font-size: 13px;
+    font-size: 14px;
     padding: 5px; }
   input {
     float: right;
@@ -230,7 +231,7 @@ input#secure {
       text-align: right;
       padding: 2px; } }
   li {
-    margin: 3px 0; }
+    margin: 5px 0; }
   h2 {
     display: none;
     float: left;
@@ -242,18 +243,18 @@ input#secure {
 .panel {
   #settings {
     @include clearfix;
-    max-width: 328px;
+    max-width: 345px;
     margin: 0 auto;
     ul {
       float: left;
-      width: 140px;
+      width: 150px;
       min-height: 70px;
       margin: 0;
       padding: 0;
       list-style: none;
-      margin-right: 20px;
-      padding-right: 20px;
-      border-right: 1px dotted #666;
+        margin-right: 20px;
+        padding-right: 20px;
+    //  border-right: 1px dotted #666;
       &.last {
         margin-right: 0;
         padding-right: 0;
