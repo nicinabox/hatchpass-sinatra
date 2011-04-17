@@ -19,25 +19,22 @@ configure do
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.config'))
 end
 
-# Request from an iPhone or iPod touch? (Mobile Safari user agent)
 helpers do
-  def iphone_user_agent?
+  def mobile?
     request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile|WebOS)/]
   end
 end
 
-# at a minimum, the main sass file must reside within the ./views directory. here, we create a ./views/stylesheets directory where all of the sass files can safely reside.
 get '/stylesheets/:name.css' do
   content_type 'text/css', :charset => 'utf-8'
   scss(:"stylesheets/#{params[:name]}", Compass.sass_engine_options)
 end
 
-
 def create_password data
   symbols = "!@#]^&*(%[?${+=})_-|/<>".split(//)
   
-  hash = SHA256.hexdigest("#{data['domain']}:#{data['master']}")
-  hash = SHA256.hexdigest("#{hash+data['key']}")[0...data['settings']['length'].to_i]
+  hash = SHA2.hexdigest("#{data['domain']}:#{data['master']}")
+  hash = SHA2.hexdigest("#{hash+data['key']}")[0...data['settings']['length'].to_i]
   #hash = Base64.strict_encode64(hash)
   
   host, tld = data['domain'].split(".")
