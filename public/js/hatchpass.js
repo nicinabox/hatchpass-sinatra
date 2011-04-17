@@ -48,7 +48,7 @@ $(document).ready(function() {
 	})
 	$('#master, #domain').keyup(function(){
     if ($(this).val() == "") {
-      $('#secure').val('')
+      $('#secret').val('')
       $(this).next('.clearinput').fadeOut(50)
     } else {
       $(this).next('.clearinput').fadeIn(50)
