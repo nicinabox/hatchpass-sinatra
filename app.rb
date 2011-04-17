@@ -49,7 +49,7 @@ def create_password data
     if item.match(/[a-zA-Z]/) # Letters
         if data['settings']['caps'] && !this_upper
           this_upper = true
-          secret[num].upcase!
+           secret[num] = item.match(/[a-zA-Z]/)[0].upcase
         else
           this_upper = false
         end
@@ -57,7 +57,8 @@ def create_password data
       if data['settings']['symbols']
         secret_idx = num + key_num / 3
         sym_idx = nums + num + (key_num * nums) + (1 * num) # TODO: picking the right index
-        p sym_idx
+        p secret
+        p "secret_idx: #{secret_idx}, sym_idx: #{sym_idx}"
         unless secret[secret_idx].nil? or secret_idx < 0 or sym_idx < 0 or symbols[sym_idx].nil?
           secret[secret_idx] += symbols[sym_idx]
         end
@@ -65,7 +66,6 @@ def create_password data
       nums += 1
     end
   end
-  
   secret.join[0...data['settings']['length'].to_i]           
 end
 
