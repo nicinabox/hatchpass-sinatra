@@ -13,7 +13,7 @@ include Digest
 set :app_file, __FILE__
 set :root, File.dirname(__FILE__)
 set :views, "views"
-set :public, 'static'
+set :public, 'public'
 
 configure do
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.config'))
