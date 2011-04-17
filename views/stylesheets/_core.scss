@@ -234,7 +234,8 @@ input#secure {
 
 .panel {
   #settings {
-    max-width: 540px;
+    @include clearfix;
+    max-width: 328px;
     margin: 0 auto;
     ul {
       float: left;
