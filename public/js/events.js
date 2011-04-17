@@ -10,9 +10,9 @@ var settings = {
 	"algorithm"	: "default",
 	"r_master"	: true,	
 	"r_settings": false,
-	"r_url"		: true	
+	"save_key": true
 }
-console.log(key)
+
 if (key != location.pathname.substr(1)) {
   window.location = "/"+key
 } else {
@@ -23,6 +23,28 @@ if (key != location.pathname.substr(1)) {
 $(function() {
   $(window).resize(function () { 
     console.log(window.innerWidth)
+  })
+  
+  // New Key
+  $('#new_key').bind('click', function(event) {
+    localStorage.removeItem('hp_key')
+    localStorage.removeItem('hp_master')
+    $('.panel').slideUp('fast', function() {
+      window.location = '/'
+    })
+    return false
+  })
+  // Save Key
+  $('#save_key').bind('save_key', function(event) {
+    if ($(this).data('saved')) { // Forget it
+      localStorage.removeItem('hp_key')
+      $('.message').html('No saved key.')
+      $(this).text('Save Key').data('saved', false)
+    } else {
+      localStorage.hp_key = settings.key
+      $('.message').html('Saved: '+settings.key)
+      $(this).text('Forget Key').data('saved', true)
+    }
   })
   
   // Focus

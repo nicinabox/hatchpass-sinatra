@@ -86,6 +86,34 @@ a {
   } 
 }
 
+.button {
+  padding: 4px 8px;
+  font-size: 13px;
+  color: #000;
+  line-height: 18px;
+  @include border-radius(3px);
+  @include linear-gradient(color-stops(#ddd, #aaa));
+  @include box-shadow(#333, 0, 2px, 4px);
+  text-shadow: 0 1px 1px #fff;
+  text-decoration: none;  
+  @include inline-block;
+  margin: 3px;
+  &:active {
+    position: relative;
+    top: 1px;
+    background: #ddd;
+  }
+  &.action {
+    font-weight: bold;
+    @include linear-gradient(color-stops(#268acd, #0076c4));
+    text-shadow: 0 -1px 1px #00558d;
+    color: white;
+    &:active {
+      background: #268acd;
+    }
+  }
+}
+
 #main {
   position: relative;
   width: 350px;
@@ -208,7 +236,7 @@ input#secure {
 .panel {
   #settings {
     max-width: 540px;
-    margin: 0 auto; 
+    margin: 0 auto;
     ul {
       float: left;
       width: 140px;
@@ -226,10 +254,16 @@ input#secure {
       }  
     } 
   }
-  #my_url {
-    text-align: center;
-    ul {
-      list-style: none; } }
+  #my_key {  
+    max-width: 300px;
+    margin: 0 auto;
+    @include clearfix;
+    .message {
+      margin: 5px 0;
+    }
+    nav {
+    }
+  }
   
 }
 

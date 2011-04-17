@@ -22,6 +22,7 @@ $(document).ready(function() {
         break
     } 
   })
+  $('#save_key').trigger('save_key')
   
   $('#hatch').keyup(function(e){
     if (e.keyCode == 13 || e.keyCode == 9) {
@@ -60,6 +61,9 @@ $(document).ready(function() {
     return false;
   })
   
-  // My url
-  $('.message').html('Saved: '+settings.key || "nothing saved.")
+  $('#save_key').click(function() {
+    $('#save_key').trigger('save_key')
+    return false
+  })
+  
 })
