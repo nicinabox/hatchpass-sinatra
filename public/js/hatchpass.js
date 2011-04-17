@@ -24,8 +24,7 @@ $(document).ready(function() {
   })
   $('#save_key').trigger('save_key')
   
-  $('#hatch').keyup(function(e){
-    if (e.keyCode == 13 || e.keyCode == 9) {
+  $('#hatch').change(function(e){
       var master = $('#master').val()
       var domain = $('#domain').val()
       if (master != '' && domain != '') {
@@ -37,7 +36,6 @@ $(document).ready(function() {
             $('#secret').val(data).select()
         })
       }
-    }
   })
   
   // Remember master
