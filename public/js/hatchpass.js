@@ -1,4 +1,9 @@
 $(document).ready(function() {
+  $('#aboutproject').click(function() {
+    $('#about').slideToggle(100);
+  	 return false;
+  });
+  
   $('#master').val(localStorage.hp_master).trigger('focus_empty')
   if ($('#master').val() != '') {
     $('#master').next('.clearinput').fadeIn(50)
@@ -28,7 +33,6 @@ $(document).ready(function() {
   })
   
   $('#save_key').trigger('save_key')
-  
   
   // Remember master
   $('#master').change(function(){

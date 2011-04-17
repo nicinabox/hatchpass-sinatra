@@ -67,6 +67,10 @@ def create_password data
   secret.join[0...data['settings']['length'].to_i]           
 end
 
+get '/about' do
+  erb :about, :layout => :'layouts/layout'
+end
+
 get "/:key?" do 
   if params[:key]
     erb :index, :layout => :'layouts/layout'
@@ -79,3 +83,4 @@ end
 post '/:key' do
   @secret = create_password params
 end
+

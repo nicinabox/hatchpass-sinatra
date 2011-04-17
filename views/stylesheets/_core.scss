@@ -5,7 +5,12 @@ body {
   background: #efefef;
   margin: 0;
 }
-
+p {
+  margin: 5px 0 10px;
+}
+strong {
+  font-weight: bold;
+}
 #logo img {
   margin-top: 20px; 
 }
@@ -32,6 +37,8 @@ a {
 }
 
 #header {
+  position: relative;
+  z-index: 13;
   @include linear-gradient(color-stops(#ddd, #aaa));
   @include box-shadow(#666, 0, 2px, 5px);
   text-shadow: 0 1px 1px #eaeaea;
