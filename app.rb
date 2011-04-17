@@ -22,7 +22,7 @@ end
 # Request from an iPhone or iPod touch? (Mobile Safari user agent)
 helpers do
   def iphone_user_agent?
-    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile|WebOS)/]
   end
 end
 
