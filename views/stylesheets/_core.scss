@@ -32,14 +32,11 @@ a {
 }
 
 #header {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  z-index: 6;
   @include linear-gradient(color-stops(#ddd, #aaa));
-  @include box-shadow(#aaa, 0, -2px, 5px);
+  @include box-shadow(#666, 0, 2px, 5px);
   text-shadow: 0 1px 1px #eaeaea;
   border-top: 1px solid #eee;
+  border-bottom: 1px solid #777;
   a {
     text-decoration: none;
   }
@@ -158,8 +155,9 @@ input#secure {
 ----------------------------------*/
 
 .panel {
+  @include box-shadow(#333, 0, -2px, 5px, 0, inset);
   background: #444;
-  border-bottom: 4px solid #666;
+  border-bottom: 1px solid #222;
   color: #efefef;
   position: relative;
   top: 0;
