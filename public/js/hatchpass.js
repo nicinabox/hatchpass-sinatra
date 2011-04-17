@@ -39,21 +39,10 @@ $(document).ready(function() {
     }
   })
   
-  // Trigger panes
-  $('.button').click(function() {
-    panel = '.'+$(this).attr('href').substr(1)
-    if (!$(panel).hasClass('active')) {
-      $('.panel').slideUp('fast').removeClass('active')
-    }
-    $(panel).slideToggle('fast').toggleClass('active')
-    return false
-  })
-  
   // Remember master
   $('#master').change(function(){
     if ($("#r_master").is(':checked') && $('#master').val() != "") {
       localStorage.hp_master = $('#master').val()
-      console.log("Master saved")
     }
 	})
 	$('#master, #domain').keyup(function(){
