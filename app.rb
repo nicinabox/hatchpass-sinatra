@@ -32,7 +32,7 @@ end
 
 def create_password data
   symbols = "!@#]^&*(%[?${+=})_-|/<>".split(//)
-
+  data['domain'].downcase!
   hash = SHA2.hexdigest("#{data['master']}:#{data['domain']}")
   hash = SHA2.hexdigest("#{hash}#{data['key']}")[0...data['settings']['length'].to_i]
   #hash = Base64.strict_encode64(hash)
@@ -43,7 +43,6 @@ def create_password data
   key_num = hash.match(/\d/)[0].to_i
   secret = hash.split(//)
   this_upper = true
-  
   
   secret.each_with_index do |item, num|
     if item.match(/[a-zA-Z]/) # Letters
