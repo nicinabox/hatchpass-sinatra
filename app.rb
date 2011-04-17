@@ -32,32 +32,40 @@ end
 
 def create_password data
   symbols = "!@#]^&*(%[?${+=})_-|/<>".split(//)
-  
-  hash = SHA2.hexdigest("#{data['domain']}:#{data['master']}")
-  hash = SHA2.hexdigest("#{hash+data['key']}")[0...data['settings']['length'].to_i]
+
+  hash = SHA2.hexdigest("#{data['master']}:#{data['domain']}")
+  hash = SHA2.hexdigest("#{hash}#{data['key']}")[0...data['settings']['length'].to_i]
   #hash = Base64.strict_encode64(hash)
-  
+
   host, tld = data['domain'].split(".")
+  tld = 'com' if tld.nil?
   nums = 0
+  key_num = hash.match(/\d/)[0].to_i
   secret = hash.split(//)
-  key_num = data['settings']['key'].match(/\d/)[0].to_i
   this_upper = true
   
   
-  # interpolate symsymbolbols
-  if data['settings']['symbols']
-    secret.each_with_index do |item, num|
-      key_num ||= secret[item].to_i
-    
-      secret_idx = (num + key_num / 3) + 1
-      sym_idx = nums + num + key_num * nums + tld.size * num
-      # $nums+$key+$firstNum*$nums+count($tld)*$key
-      unless secret[secret_idx].nil? or secret_idx < 0 or sym_idx < 0 or secret[sym_idx].nil?
-        secret.insert secret_idx, symbols[sym_idx] 
+  secret.each_with_index do |item, num|
+    if item.match(/[a-zA-Z]/) # Letters
+        if data['settings']['caps'] && !this_upper
+          this_upper = true
+          secret[num].upcase!
+        else
+          this_upper = false
+        end
+    else # Numbers
+      if data['settings']['symbols']
+        secret_idx = num + key_num / 3
+        sym_idx = nums + num + (key_num * nums) + (1 * num) # TODO: picking the right index
+        p sym_idx
+        unless secret[secret_idx].nil? or secret_idx < 0 or sym_idx < 0 or symbols[sym_idx].nil?
+          secret[secret_idx] += symbols[sym_idx]
+        end
       end
-      nums += 1 if item.is_a?(Integer)
+      nums += 1
     end
   end
+  
   secret.join[0...data['settings']['length'].to_i]           
 end
 
