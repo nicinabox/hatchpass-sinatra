@@ -19,6 +19,13 @@ configure do
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.config'))
 end
 
+# Request from an iPhone or iPod touch? (Mobile Safari user agent)
+helpers do
+  def iphone_user_agent?
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
+  end
+end
+
 # at a minimum, the main sass file must reside within the ./views directory. here, we create a ./views/stylesheets directory where all of the sass files can safely reside.
 get '/stylesheets/:name.css' do
   content_type 'text/css', :charset => 'utf-8'

@@ -103,7 +103,6 @@ $(function() {
 		      $('#help').fadeToggle('fast')
 		    }
 		  default:
-		    console.log(e.keyCode)
 		    break;
 		}
   })

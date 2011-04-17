@@ -23,5 +23,7 @@
       </li>
     </ul>
   </form>
-  <small id="tagline"><strong>Esc</strong> + <strong>h</strong> to see shortcuts</small>
+  <% unless iphone_user_agent? %>
+    <small id="tagline"><strong>Esc</strong> + <strong>h</strong> to see shortcuts</small>
+  <% end %>
 </section>
