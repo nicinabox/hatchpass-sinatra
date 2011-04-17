@@ -88,10 +88,10 @@ $(function() {
   		    $('input').trigger('focus_empty')
 		    }
 		    break;
-		  case 83: // s
+		  case 74: // j
 		    if (!focused) $('#my_settings').trigger('click')
 		    break;
-		  case 85: // u
+		  case 75: // k
 		    if (!focused) $('#my_url').trigger('click')
 		    break;
 		  case 68: // d
