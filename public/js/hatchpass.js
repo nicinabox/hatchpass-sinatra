@@ -58,5 +58,8 @@ $(document).ready(function() {
     $(this).fadeOut(50);
     $('#secure').val('');
     return false;
-  });
+  })
+  
+  // My url
+  $('.message').html('Saved: '+settings.key || "nothing saved.")
 })

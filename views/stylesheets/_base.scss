@@ -1,4 +1,5 @@
 @import 'compass/reset';
+@import 'compass/utilities';
 @import 'compass/css3';
 
 $blue: #4096EE;
@@ -18,7 +19,7 @@ $blue: #4096EE;
   
 }
 ::-webkit-scrollbar-track {
-  background: #eee;
+  background: #eaeaea;
 }
 ::-webkit-scrollbar-track-piece {
   background: transparent;

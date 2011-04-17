@@ -1,13 +1,9 @@
 jQuery.expr[':'].focus = function( elem ) {
   return elem === document.activeElement && ( elem.type || elem.href );
 };
-
-var key = localStorage.hp_key
-if (key != location.pathname.substr(1)) {
-  window.location = "/"+key
-}
+var key = localStorage.hp_key || location.pathname.substr(1)
 var settings = {
-	"key"		:  key || location.pathname.substr(1),
+	"key"		:  key,
 	"symbols"	: true,
 	"caps"		: true,
 	"length"	: 10,
@@ -16,6 +12,13 @@ var settings = {
 	"r_settings": false,
 	"r_url"		: true	
 }
+console.log(key)
+if (key != location.pathname.substr(1)) {
+  window.location = "/"+key
+} else {
+  localStorage.hp_key = key
+}
+
 
 $(function() {
   $(window).resize(function () { 
@@ -34,7 +37,7 @@ $(function() {
   $('.panel').bind('hide', function(event) {
     $(this).slideUp('fast')
   })
-  $('.button').each(function(index) {
+  $('.nav-button').each(function(index) {
     $(this).bind('click', function() {
        panel = '.'+$(this).attr('href').substr(1)
        if (!$(panel).hasClass('active')) {
