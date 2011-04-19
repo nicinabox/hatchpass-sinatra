@@ -66,9 +66,13 @@ def create_password data
   secret.join[0...data['settings']['length'].to_i]           
 end
 
-after do
-  response['Access-Control-Allow-Origin']  = '*'
-  response['Access-Control-Allow-Methods']  = 'POST, GET'
+before do
+  if request.request_method == 'OPTIONS'
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "POST"
+    p response
+    halt 200
+  end
 end
 
 post '/create' do
