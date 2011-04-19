@@ -66,6 +66,11 @@ def create_password data
   secret.join[0...data['settings']['length'].to_i]           
 end
 
+after do
+  response['Access-Control-Allow-Origin']  = '*'
+  response['Access-Control-Allow-Methods']  = 'POST, GET'
+end
+
 post '/create' do
   unless params['settings']
     params['settings'] = {
@@ -74,7 +79,6 @@ post '/create' do
       "length"  => "10"
     }
   end
-  response['Access-Control-Allow-Origin']  = '*'
   create_password params
 end
 
