@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  $("#symbols").button();
+  $("#caps").button();
+  
   $('#aboutproject').click(function() {
     $('#about').slideToggle(100);
   	 return false;
@@ -15,6 +18,7 @@ $(document).ready(function() {
     switch (typeof settings[id]) {
       case "boolean":
         $('#'+id).attr('checked', settings[id])
+        $('#'+id).prev('label').addClass('ui-state-active')
         break
       case "number":
         $('#'+id).val(settings[id])

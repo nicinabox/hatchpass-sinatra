@@ -92,8 +92,9 @@ a {
   } 
 }
 
-.button {
+.button, .ui-button {
   padding: 4px 8px;
+  cursor: pointer;
   font-size: 13px;
   color: #000;
   line-height: 18px;
@@ -109,7 +110,7 @@ a {
     top: 1px;
     background: #ddd;
   }
-  &.action {
+  &.action, &.ui-state-active {
     font-weight: bold;
     @include linear-gradient(color-stops(#268acd, #0076c4));
     text-shadow: 0 -1px 1px #00558d;
@@ -312,3 +313,7 @@ input#secure {
     &:first-child {
       font-weight: bold;
       color: #cebb26; } } }
+
+/* HELP
+----------------------------------*/
+.ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
