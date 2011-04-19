@@ -69,9 +69,9 @@ end
 get '/create' do
   unless params['settings']
     params['settings'] = {
-      "symbols" => "true",
-      "caps"    => "true",
-      "length"  => "10"
+      "symbols" => params['symbols'],
+      "caps"    => params['caps'],
+      "length"  => params['length']
     }
   end
   
