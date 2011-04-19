@@ -66,7 +66,7 @@ def create_password data
   secret.join[0...data['settings']['length'].to_i]           
 end
 
-get '/create' do
+post '/create' do
   unless params['settings']
     params['settings'] = {
       "symbols" => "true",
@@ -74,7 +74,6 @@ get '/create' do
       "length"  => "10"
     }
   end
-  
   response['Access-Control-Allow-Origin'] = '*'
   create_password params
 end
