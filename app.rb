@@ -74,7 +74,8 @@ post '/create' do
       "length"  => "10"
     }
   end
-  response['Access-Control-Allow-Origin'] = '*'
+  response['Access-Control-Allow-Origin']  = '*'
+  response['Access-Control-Allow-Method'] = 'POST'
   create_password params
 end
 
