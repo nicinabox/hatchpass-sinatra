@@ -1,6 +1,12 @@
 jQuery.expr[':'].focus = function( elem ) {
   return elem === document.activeElement && ( elem.type || elem.href );
 };
+if (Modernizr.localstorage) {
+  var supports_localstorage = true
+} else {
+  var supports_localstorage = false
+}
+
 var key = localStorage.hp_key || location.pathname.substr(1)
 if ((settings = localStorage.hp_settings)) {
   settings = JSON.parse(settings)
@@ -25,9 +31,9 @@ if (key != location.pathname.substr(1)) {
 
 
 $(function() {
-  $(window).resize(function () { 
-    console.log(window.innerWidth)
-  })
+  if (!supports_localstorage) {
+    $('#localstorage_warning').show()
+  }
   
   // Saving settings
   $('#settings').bind('temp_save_settings', function(event) {

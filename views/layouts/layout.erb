@@ -36,6 +36,13 @@
   </div>
   <%= erb :about %>
   
+  <div id="localstorage_warning">
+    <h3>Your browser does not support localStorage.</h3>
+    <p>
+      You will not be able to save settings or use other persistence features.
+    </p>
+  </div>
+  
   <%= yield %>
   
   <% unless mobile? %>

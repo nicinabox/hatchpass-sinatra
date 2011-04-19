@@ -149,6 +149,25 @@ a {
   } 
 }
 
+#localstorage_warning {
+  background: #ffc;
+  border: 1px solid #ededb1;
+  padding: 10px;
+  font-size: 13px;
+  display: none;
+  max-width: 305px;
+  margin: 30px auto;
+  margin-bottom: 0;
+  text-shadow: 0 1px 1px #fff;
+  color: #222;
+  line-height: 20px;
+  h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+}
+
 #hatch {
   width: 240px;
   background: white;
