@@ -30,7 +30,7 @@ get '/stylesheets/:name.css' do
   scss(:"stylesheets/#{params[:name]}", Compass.sass_engine_options)
 end
 
-def create_password data
+def version_1 data
   symbols = "!@#]^&*(%[?${+=})_-|/<>".split(//)
   data['domain'].downcase!
   hash = SHA2.hexdigest("#{data['master']}:#{data['domain']}")
@@ -63,7 +63,14 @@ def create_password data
       nums += 1
     end
   end
-  secret.join[0...data['settings']['length'].to_i]           
+  secret.join[0...data['settings']['length'].to_i]
+end
+
+def create_password data, version=1
+  case version
+  when 1
+    version_1 data
+  end
 end
 
 after do
@@ -93,6 +100,6 @@ get "/:key?" do
 end
 
 post '/:key' do
-  @secret = create_password params
+  @secret = create_password params, 1
 end
 
