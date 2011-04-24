@@ -29,3 +29,22 @@ $blue: #4096EE;
   background: #aaa;
   @include border-radius(6px);
 }
+
+input[type=range] {
+    -webkit-appearance: none;
+    background-color: #ccc;
+    width: 150px;
+    height: 10px;
+    @include border-radius(5px);
+    @include box-shadow(#222, 0, 2px, 5px, 0, inset);
+    margin-top: 1px !important;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    //@include border-radius(8px);
+    //@include linear-gradient(color-stops($blue, darken($blue, 10%)));
+    background: image-url('slider-thumb.png') no-repeat;
+    width: 21px;
+    height: 21px;
+}

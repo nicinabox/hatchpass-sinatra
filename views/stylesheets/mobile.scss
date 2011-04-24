@@ -29,6 +29,7 @@
         label {
           font-weight: bold;
         }
+        .range-val { display: none;}
         input{
            &[type="text"] {
              padding: 5px;

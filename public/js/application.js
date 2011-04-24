@@ -1,4 +1,18 @@
 $(document).ready(function() {
+  // Javascript checkboxes
+  $('input[type="checkbox"]').wrap('<span class="toggle"></span>')
+  $('input[type="checkbox"]').change(function() {
+    if ($(this).is(':checked')) {
+      $(this).closest('.toggle').removeClass('off')
+    } else {
+      $(this).closest('.toggle').addClass('off')
+    }
+  })
+  
+  $('#length').change(function() {
+    $('.range-val').text($(this).val())
+  })
+  
   $('#aboutproject').click(function() {
     $('#about').slideToggle(100);
   	 return false;
@@ -17,7 +31,7 @@ $(document).ready(function() {
         $('#'+id).attr('checked', settings[id])
         break
       case "number":
-        $('#'+id).val(settings[id])
+        $('#'+id).val(settings[id]).prev('.range-val').text(settings[id])
         break
       case "string":
         $('#'+id).val(settings[id])
@@ -28,7 +42,7 @@ $(document).ready(function() {
     } 
   })
   $('#settings').bind('change keyup', function(e) {
-    $(this).trigger('temp_save_settings')
+      $(this).stop().delay(300).trigger('temp_save_settings')
     return false
   })
   

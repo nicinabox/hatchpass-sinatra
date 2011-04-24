@@ -125,7 +125,7 @@ a {
   width: 350px;
   margin: 40px auto;
   #nav {
-    z-index: 2;
+    z-index: 15;
     position: absolute;
     right: 0px;
     .nav-button {
@@ -249,18 +249,35 @@ input#secure {
 .panel {
   #settings {
     @include clearfix;
-    max-width: 345px;
+    max-width: 300px;
     margin: 0 auto;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 11px;
     ul {
+      @include clearfix;
       float: left;
-      width: 150px;
-      min-height: 70px;
+      width: 100%;
       margin: 0;
       padding: 0;
       list-style: none;
-        margin-right: 20px;
-        padding-right: 20px;
-    //  border-right: 1px dotted #666;
+      li {
+        margin-bottom: 10px;
+        label {
+          display: block;
+          text-shadow: 0 1px 1px #111;
+        }
+        &#length{
+
+        }
+        .range-val {
+          float: right;
+          margin-left: 10px;
+          width: 14px;
+          text-align: right;
+          font-weight: bold;
+        }
+      }
       &.last {
         margin-right: 0;
         padding-right: 0;
@@ -281,6 +298,21 @@ input#secure {
     }
   }
   
+}
+
+span.toggle {
+  display: block;
+  float: right;
+  width: 28px;
+  height: 17px;
+  background: image-url('toggle-switch.png') bottom no-repeat;
+  margin-top: -3px;
+  input[type="checkbox"] {
+    visibility: hidden;
+  }
+  &.off {
+    background-position: top;
+  }
 }
 
 /* HELP

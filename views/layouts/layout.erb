@@ -10,8 +10,6 @@
   <link rel="icon" type="image/png" href="/images/favicon.png">	
   <link rel="stylesheet" href="/stylesheets/screen.css">
   <% if mobile? %>  
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
-  <script src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
     <!-- For iPhone 4 with high-resolution Retina display: -->
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon.png">
@@ -25,10 +23,11 @@
     <!--iOS web app -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="apple-touch-startup-image" href="/images/splash.jpg">
-    <link rel="stylesheet" href="/stylesheets/mobile.css">  
+    <link rel="stylesheet" href="/stylesheets/mobile.css">
+    <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" /> -->
   <% end %>
 </head>
-<body>
+<body data-role="page">
   <%= erb :_settings %>
   <%= erb :_my_url %>
   <div id="header">

@@ -11,8 +11,7 @@ if ((settings = localStorage.hp_settings)) {
   	"caps"		: true,
   	"length"	: 10,
   	"algorithm"	: "default",
-  	"r_master"	: true,	
-  	"r_settings": false,
+  	"remember": true,
   	"save_key": true
   }
 }
@@ -24,11 +23,7 @@ if (key != location.pathname.substr(1)) {
 }
 
 
-$(function() {
-  $(window).resize(function () { 
-    console.log(window.innerWidth)
-  })
-  
+$(function() {  
   // Saving settings
   $('#settings').bind('temp_save_settings', function(event) {
     $('#settings input, #settings select').each(function(index) {
