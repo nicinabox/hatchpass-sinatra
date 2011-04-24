@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'rack/cache'
 require 'compass'
 require 'sinatra'
 require 'erb'
@@ -8,12 +9,17 @@ require 'digest/sha1'
 require 'digest/sha2'
 require 'base64'
 include Digest
+use Rack::Cache,
+  :verbose => true, 
+  :metastore => "file:tmp/meta", 
+  :entitystore => "file:tmp/body"
 
 # set sinatra's variables
 set :app_file, __FILE__
 set :root, File.dirname(__FILE__)
 set :views, "views"
 set :public, 'public'
+
 
 configure do
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.config'))
@@ -24,12 +30,14 @@ helpers do
     request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile|WebOS)/]
   end
   def versioned_javascript(js)
-      "/js/#{js}.js?" + File.mtime(File.join(Sinatra::Application.public, "js", "#{js}.js")).to_i.to_s
-    end
+    response['Expires'] = (Time.now + 60*60*24*356*3).httpdate
+    "/js/#{js}.js?" + (File.mtime(File.join(Sinatra::Application.public, "js", "#{js}.js")).to_i.to_s if ENV["RACK_ENV"] == "development")
+  end
 end
 
 get '/stylesheets/:name.css' do
   content_type 'text/css', :charset => 'utf-8'
+  response['Expires'] = (Time.now + 60*60*24*356*3).httpdate
   scss(:"stylesheets/#{params[:name]}", Compass.sass_engine_options)
 end
 
@@ -76,7 +84,8 @@ def create_password data, version=1
   end
 end
 
-after do
+before do
+  cache_control :public
   response.headers["Access-Control-Allow-Origin"] = "*"
   response.headers["Access-Control-Allow-Methods"] = "*"
   response.headers["Access-Control-Request-Header"] = "X-Requested-With"

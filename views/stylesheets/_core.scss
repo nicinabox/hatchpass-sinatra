@@ -2,7 +2,7 @@
 
 body {
   @include neue;
-  background: #efefef url('/images/noise-lt.jpg') repeat;
+  background: #efefef image-url('noise-lt.jpg') repeat;
   margin: 0;
 }
 p {
@@ -213,7 +213,7 @@ input#secure {
 
 .panel {
   @include box-shadow(#333, 0, -2px, 5px, 0, inset);
-  background: #444 url('/images/noise-dk.jpg') repeat;
+  background: #444 image-url('noise-dk.jpg') repeat;
   border-bottom: 1px solid #222;
   color: #efefef;
   position: relative;
