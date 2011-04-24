@@ -361,6 +361,7 @@ span.toggle {
   background: white;
   padding: 20px 0;
   @include box-shadow(#ddd, 0, -2px, 5px);
+  display: none;
   ul {
     padding: 0 20px;
     li {
