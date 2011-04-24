@@ -10,6 +10,18 @@ $blue: #4096EE;
 @mixin amp {
   font-family: Baskerville,"Goudy Old Style","Palatino","Book Antiqua",serif;
 }
+@mixin rgba($r, $g, $b, $opacty) {
+  /* Fallback for web browsers that doesn't support RGBa */
+	background: rgb($r, $g, $b);
+	/* RGBa with 0.6 opacity */
+	background: rgba($r, $g, $b, $opacty);
+	/* For IE 5.5 - 7*/
+//	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	/* For IE 8*/
+//	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	
+}
+
 
 ::-webkit-scrollbar {
     width: 8px;

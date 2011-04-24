@@ -227,7 +227,8 @@ input#secure {
     @include clearfix;
   }
   label {
-    padding: 5px; }
+    padding: 5px; 
+  }
   input {
     float: right;
     margin: 3px 0;
@@ -243,8 +244,6 @@ input#secure {
       font-weight: bold;
     } 
   }
-  li {
-    margin: 5px 0; }
   h2 {
     display: none;
     float: left;
@@ -269,20 +268,30 @@ input#secure {
       padding: 0;
       list-style: none;
       li {
-        margin-bottom: 10px;
         label {
+          cursor: pointer;
+          padding: 10px;
+          @include border-radius(20px);
           display: block;
           text-shadow: 0 1px 1px #111;
+          &:hover {
+            @include rgba(0, 0, 0, 0.1);
+          }
         }
         &#length{
 
         }
         .range-val {
           float: right;
-          margin-left: 10px;
+          margin-left: 4px;
           width: 14px;
+          margin-top: -7px;
+          padding: 6px 4px 6px 12px;
           text-align: right;
           font-weight: bold;
+          color: #222;
+          text-shadow: 0 1px 1px #fff;
+          background: image-url('range-val.png') no-repeat;
         }
       }
       &.last {
