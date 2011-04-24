@@ -46,7 +46,6 @@ $(document).ready(function() {
   $('#settings input, #settings select').each(function(index) {
     var id = $(this).attr('id')  
     var el = "#"+id
-    console.log(id+" - "+this.type+" - "+settings[id])
     switch (this.type) {
       case "checkbox":
         $(el).attr('checked', settings[id])

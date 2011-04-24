@@ -1,18 +1,4 @@
-require 'rubygems'
-require 'rack/cache'
-require 'compass'
-require 'sinatra'
-require 'erb'
-require 'sass'
-require 'digest/md5'
-require 'digest/sha1'
-require 'digest/sha2'
-require 'base64'
 include Digest
-use Rack::Cache,
-  :verbose => true, 
-  :metastore => "file:tmp/meta", 
-  :entitystore => "file:tmp/body"
 
 # set sinatra's variables
 set :app_file, __FILE__
@@ -20,9 +6,17 @@ set :root, File.dirname(__FILE__)
 set :views, "views"
 set :public, 'public'
 
-
 configure do
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.config'))
+end
+
+before do
+  expires 300, :public, :must_revalidate
+  #cache_control :public, :max_age => 600
+  response.headers["Access-Control-Allow-Origin"] = "*"
+  response.headers["Access-Control-Allow-Methods"] = "*"
+  response.headers["Access-Control-Request-Header"] = "X-Requested-With"
+  p response
 end
 
 helpers do
@@ -30,7 +24,7 @@ helpers do
     request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile|WebOS)/]
   end
   def versioned_javascript(js)
-    "/js/#{js}.js?" + File.mtime(File.join(Sinatra::Application.public, "js", "#{js}.js")).to_i.to_s
+    "/js/#{js}.js"
   end
 end
 
@@ -80,13 +74,6 @@ def create_password data, version=1
   when 1
     version_1 data
   end
-end
-
-before do
-  cache_control :public
-  response.headers["Access-Control-Allow-Origin"] = "*"
-  response.headers["Access-Control-Allow-Methods"] = "*"
-  response.headers["Access-Control-Request-Header"] = "X-Requested-With"
 end
 
 get '/create' do

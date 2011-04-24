@@ -1,0 +1,20 @@
+GEM
+  specs:
+    compass (0.10.6)
+      haml (>= 3.0.4)
+    haml (3.0.25)
+    rack (1.2.2)
+    rack-cache (1.0.1)
+      rack (>= 0.4)
+    sinatra (1.2.3)
+      rack (~> 1.1)
+      tilt (>= 1.2.2, < 2.0)
+    tilt (1.2.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  compass
+  rack-cache
+  sinatra
