@@ -30,14 +30,12 @@ helpers do
     request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile|WebOS)/]
   end
   def versioned_javascript(js)
-    response['Expires'] = (Time.now + 60*60*24*356*3).httpdate
-    "/js/#{js}.js?" + (File.mtime(File.join(Sinatra::Application.public, "js", "#{js}.js")).to_i.to_s if ENV["RACK_ENV"] == "development")
+    "/js/#{js}.js?" + File.mtime(File.join(Sinatra::Application.public, "js", "#{js}.js")).to_i.to_s
   end
 end
 
 get '/stylesheets/:name.css' do
   content_type 'text/css', :charset => 'utf-8'
-  response['Expires'] = (Time.now + 60*60*24*356*3).httpdate
   scss(:"stylesheets/#{params[:name]}", Compass.sass_engine_options)
 end
 
