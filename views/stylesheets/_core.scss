@@ -46,11 +46,11 @@ a {
 #header {
   position: relative;
   z-index: 13;
-  @include linear-gradient(color-stops(#ddd, #aaa));
-  @include box-shadow(#666, 0, 2px, 5px);
+  @include linear-gradient(color-stops(#dcdce1, #bec3c8));
+  @include box-shadow(#999, 0, 2px, 5px);
   text-shadow: 0 1px 1px #eaeaea;
   border-top: 1px solid #eee;
-  border-bottom: 1px solid #777;
+  border-bottom: 1px solid #99a1a9;
   @include clearfix;
   a {
     text-decoration: none;
@@ -76,7 +76,7 @@ a {
       &:hover{
         @include box-shadow(#555, 0, 0, 3px, 0, inset);
         //@include linear-gradient(color-stops(#aaa, #ddd));
-        background: #ddd;
+        background: #eee;
         border-bottom: 1px solid #bbb;
         @include border-radius(3px);
       }
