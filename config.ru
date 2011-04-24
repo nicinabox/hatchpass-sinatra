@@ -13,7 +13,6 @@ require 'base64'
 Bundler.require
 
 use Rack::Cache,
-  :verbose => true, 
   :metastore => "file:tmp/meta", 
   :entitystore => "file:tmp/body"
 
