@@ -23,6 +23,9 @@ helpers do
   def mobile?
     request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile|WebOS)/]
   end
+  def versioned_javascript(js)
+      "/js/#{js}.js?" + File.mtime(File.join(Sinatra::Application.public, "js", "#{js}.js")).to_i.to_s
+    end
 end
 
 get '/stylesheets/:name.css' do

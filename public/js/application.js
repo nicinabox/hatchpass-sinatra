@@ -45,23 +45,25 @@ $(document).ready(function() {
   // Set settings
   $('#settings input, #settings select').each(function(index) {
     var id = $(this).attr('id')  
-    switch (typeof settings[id]) {
-      case "boolean":
-        $('#'+id).attr('checked', settings[id])
+    var el = "#"+id
+    console.log(id+" - "+this.type+" - "+settings[id])
+    switch (this.type) {
+      case "checkbox":
+        $(el).attr('checked', settings[id])
+        if (!settings[id]) {
+          $(el).closest('.toggle').addClass('off')
+        }
         break
-      case "number":
-        $('#'+id).val(settings[id]).prev('.range-val').text(settings[id])
+      case "range":
+        $(el).val(settings[id]).prev('.range-val').text(settings[id])
         break
-      case "string":
-        $('#'+id).val(settings[id])
-        break  
       default:
         console.log(id)
         break
     } 
   })
   $('#settings').bind('change keyup', function(e) {
-      $(this).stop().delay(300).trigger('temp_save_settings')
+      $(this).stop().delay(300).trigger('save_settings')
     return false
   })
   
@@ -69,7 +71,7 @@ $(document).ready(function() {
   
   // Remember master
   $('#master').change(function(){
-    if ($("#r_master").is(':checked') && $('#master').val() != "") {
+    if ($("#remember").is(':checked') && $('#master').val() != "") {
       localStorage.hp_master = $('#master').val()
     }
 	})

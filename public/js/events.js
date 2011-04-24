@@ -14,6 +14,7 @@ if ((settings = localStorage.hp_settings)) {
   	"remember": true,
   	"save_key": true
   }
+  localStorage.hp_settings = JSON.stringify(settings)
 }
 
 if (key != location.pathname.substr(1)) {
@@ -25,28 +26,25 @@ if (key != location.pathname.substr(1)) {
 
 $(function() {  
   // Saving settings
-  $('#settings').bind('temp_save_settings', function(event) {
+  $('#settings').bind('save_settings', function(event) {
     $('#settings input, #settings select').each(function(index) {
       var id = $(this).attr('id')  
-      var val = $(this).val()
-      var checked = $(this).is(':checked')
-      switch (typeof settings[id]) {
-        case "boolean":
-          settings[id] = checked
+      switch (this.type) {
+        case "checkbox":
+          settings[id] = $(this).is(':checked')
           break
         default:
-          settings[id] = val
+          settings[id] = $(this).val()
           break
       }
-      if ($('#r_master').is(':checked')) {
-        localStorage.hp_master = $('#master').val()
-      } else {
-        localStorage.removeItem('hp_master')
-      }
-      if ($('#r_settings').is(':checked')) {
+      if ($('#remember').is(':checked')) {
         localStorage.hp_settings = JSON.stringify(settings)
+        localStorage.hp_master = $('#master').val()
+        localStorage.hp_key = key
       } else {
         localStorage.removeItem('hp_settings')
+        localStorage.removeItem('hp_master')
+        localStorage.removeItem('hp_key')
       }
     })
     $('#hatch').trigger('change')

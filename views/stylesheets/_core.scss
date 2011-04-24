@@ -229,6 +229,13 @@ input#secure {
   label {
     padding: 5px; 
   }
+  .hint {
+    text-transform: none;
+    letter-spacing: 0;
+    color: #CCC;
+    margin: 0 10px;
+    text-shadow: 0 -1px 1px #222;
+  }
   input {
     float: right;
     margin: 3px 0;
@@ -273,7 +280,7 @@ input#secure {
           padding: 10px;
           @include border-radius(20px);
           display: block;
-          text-shadow: 0 1px 1px #111;
+          text-shadow: 0 -1px 1px #111;
           &:hover {
             @include rgba(0, 0, 0, 0.1);
           }
