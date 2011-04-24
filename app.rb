@@ -11,11 +11,11 @@ configure do
 end
 
 before do
-  #expires 36000, :public, :must_revalidate
-  cache_control :public, :max_age => 36000 
+  expires 36000, :public, :must_revalidate
   response.headers["Access-Control-Allow-Origin"] = "*"
   response.headers["Access-Control-Allow-Methods"] = "*"
   response.headers["Access-Control-Request-Header"] = "X-Requested-With"
+  p response
 end
 
 helpers do
