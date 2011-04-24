@@ -9,6 +9,11 @@ $(document).ready(function() {
     }
   })
   
+  // help
+  $('#tagline').click(function() {
+    $('#help').fadeToggle()
+  });
+  
   $('#length').change(function() {
     $('.range-val').text($(this).val())
   })
