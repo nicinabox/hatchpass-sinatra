@@ -27,3 +27,8 @@
     <a href="#" id="tagline"><strong class="kb">Esc</strong> <strong class="kb">h</strong> to see shortcuts</a>
   <% end %>
 </section>
+
+<% unless mobile? %>
+  <%= erb :_help %>
+<% end %>
+<%= erb :_javascripts %>

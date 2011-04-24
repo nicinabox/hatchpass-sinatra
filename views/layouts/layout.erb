@@ -33,16 +33,12 @@
   <div id="header">
       <h1><a id="logo" href="/" title="">Hatchpass</a></h1>
       <nav>
-        <a id="aboutproject" href="#about">About</a>
+        <a id="aboutproject" href="/about">About</a>
       </nav>
   </div>
-  <%= erb :about %>
+  <%# erb :about %>
   
   <%= yield %>
   
-  <% unless mobile? %>
-    <%= erb :_help %>
-  <% end %>
-  <%= erb :_javascripts %>
 </body>
 </html>

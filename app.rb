@@ -92,7 +92,9 @@ get '/create' do
   end
   create_password params
 end
-
+get '/about' do
+  erb :about,:layout => :'layouts/layout'
+end
 get "/:key?" do 
   if params[:key]
     erb :index, :layout => :'layouts/layout'

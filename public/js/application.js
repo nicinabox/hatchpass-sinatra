@@ -32,10 +32,10 @@ $(document).ready(function() {
     $('.range-val').text($(this).val())
   })
   
-  $('#aboutproject').click(function() {
-    $('#about').slideToggle(100);
-  	 return false;
-  });
+  // $('#aboutproject').click(function() {
+  //   $('#about').slideToggle(100);
+  //   return false;
+  // });
   
   $('#master').val(localStorage.hp_master).trigger('focus_empty')
   if ($('#master').val() != '') {
