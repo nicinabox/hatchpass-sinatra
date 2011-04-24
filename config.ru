@@ -14,7 +14,9 @@ Bundler.require
 
 use Rack::Cache,
   :metastore => "file:tmp/meta", 
-  :entitystore => "file:tmp/body"
+  :entitystore => "file:tmp/body",
+  :allow_reload => false,
+  :allow_revalidate => false
 
 require './app'
 run Sinatra::Application
