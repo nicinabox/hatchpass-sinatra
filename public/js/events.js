@@ -149,7 +149,7 @@ $(function() {
 		    break;
 		  case 191: case 72: // foward slash or h
 		    if (!focused) {
-		      $('#help').slideUp('fast')
+		      $('#help').fadeIn('fast')
 		    }
 		  default:
 		    break;
