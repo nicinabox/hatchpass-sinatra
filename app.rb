@@ -15,7 +15,6 @@ before do
   response.headers["Access-Control-Allow-Origin"] = "*"
   response.headers["Access-Control-Allow-Methods"] = "*"
   response.headers["Access-Control-Request-Header"] = "X-Requested-With"
-  p response
 end
 
 helpers do
@@ -88,7 +87,7 @@ end
 get '/about' do
   erb :about,:layout => :'layouts/layout'
 end
-get "/:key?" do 
+get "/:key?" do
   if params[:key]
     erb :index, :layout => :'layouts/layout'
   else

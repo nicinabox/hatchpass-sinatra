@@ -12,9 +12,9 @@ require 'base64'
 
 Bundler.require
 
-use Rack::Cache,
-  :metastore => "file:tmp/meta", 
-  :entitystore => "file:tmp/body"
+# use Rack::Cache,
+#   :metastore => "file:tmp/meta", 
+#   :entitystore => "file:tmp/body"
 
 require './app'
 run Sinatra::Application
