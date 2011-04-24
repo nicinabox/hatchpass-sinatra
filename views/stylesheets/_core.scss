@@ -35,6 +35,9 @@ strong {
   font-size: 110%;
   font-style: italic;
 }
+.close {
+  cursor: pointer;
+}
 
 a {
   color: $blue;
@@ -352,30 +355,22 @@ span.toggle {
 #help {
   position: absolute;
   z-index: 20;
-  height: 100%;
   width: 100%;
-  top: 0;
   left: 0;
-  color: #fff;
-  display: none;
-  > table {
-    padding: 42px;
-    margin: 60px auto;
-    background: #fff;
-    @include border-radius(5px);
-    @include box-shadow(#aaa, 0, 0, 5px);
+  bottom: 0;
+  background: white;
+  padding: 20px 0;
+  @include box-shadow(#ddd, 0, -2px, 5px);
+  ul {
+    padding: 0 20px;
+    li {
+      float: left;
+      color: #666;
+      font-size: 12px;
+      margin-right: 20px;
+      .kb {
+        margin-top: -4px;
+      }
+    }
   }
-  th {
-    color: #222;
-    padding: 5px;
-    margin: 0;
-    border-bottom: 1px dotted #444; }
-  td {
-    color: #222;
-    padding: 10px;
-    font-size: 13px;
-    &:first-child {
-      color: #999; 
-    } 
-  } 
 }

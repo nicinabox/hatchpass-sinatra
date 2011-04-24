@@ -112,8 +112,14 @@ $(function() {
   
   // Help
   $('#help').bind('help', function(event) {
-    $(this).fadeToggle();
+    $(this).slideToggle('fast');
   })
+  
+  $('.close').bind('click', function(event) {
+    $('#help').slideUp('fast')
+    $('.panel').trigger('hide')
+    $('input').trigger('focus_empty')
+  });
   
   $(document).keyup(function(e){
     var focused = $("input").is(":focus")
@@ -123,7 +129,7 @@ $(function() {
 		    if (focused) {
 		      $(':focus').blur()
 		    } else {
-		      $('#help').fadeOut('fast')
+		      $('#help').slideUp('fast')
 		      $('.panel').trigger('hide')
   		    $('input').trigger('focus_empty')
 		    }
@@ -147,8 +153,11 @@ $(function() {
 		    break;
 		  case 191: case 72: // foward slash or h
 		    if (!focused) {
-		      $('#help').fadeIn('fast')
-		    }
+		      $('#help').slideDown('fast')
+		      if (help) {
+  		     $('#help').slideUp('fast') 
+  		    }
+		    } 
 		  default:
 		    break;
 		}

@@ -25,7 +25,7 @@ $(document).ready(function() {
   
   // help
   $('#tagline').click(function() {
-    $('#help').fadeToggle()
+    $('#help').slideToggle('fast')
     return false
   });
   
