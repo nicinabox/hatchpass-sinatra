@@ -6,10 +6,6 @@ set :root, File.dirname(__FILE__)
 set :views, "views"
 set :public, 'public'
 
-configure do
-  Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.config'))
-end
-
 before do
   expires 36000, :public, :must_revalidate
   response.headers["Access-Control-Allow-Origin"] = "*"
@@ -29,6 +25,20 @@ end
 get '/stylesheets/:name.css' do
   content_type 'text/css', :charset => 'utf-8'
   scss(:"stylesheets/#{params[:name]}", Compass.sass_engine_options)
+end
+
+def version_2 data
+  symbols = "!@#]^&*(%[?${+=})_-|/<>".split(//)
+  data['domain'].downcase!
+  hash = SHA2.hexdigest("#{data['master']}:#{data['domain']}")
+  hash = SHA2.hexdigest("#{hash}#{data['key']}")[0...data['settings']['length'].to_i]
+  hash = Base64.strict_encode64(hash)
+
+  host, tld = data['domain'].split(".")
+  tld = 'com' if tld.nil?
+  
+  
+  
 end
 
 def version_1 data
@@ -71,6 +81,8 @@ def create_password data, version=1
   case version
   when 1
     version_1 data
+  when 2
+    #version_1 data
   end
 end
 
@@ -87,8 +99,13 @@ end
 get '/about' do
   erb :about,:layout => :'layouts/layout'
 end
-get "/:key?" do
-  if params[:key]
+
+post '/fetch_key' do
+  
+end
+
+get '/:key?' do |key|
+  if key
     erb :index, :layout => :'layouts/layout'
   else
     key = SHA2.hexdigest("#{Time.now.to_i}")[0...5]

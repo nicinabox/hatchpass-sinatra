@@ -49,8 +49,8 @@ a {
 #header {
   position: relative;
   z-index: 13;
-  @include linear-gradient(color-stops(#dcdce1, #bec3c8));
-  @include box-shadow(#999, 0, 2px, 5px);
+  @include background-image(linear-gradient(#dcdce1, #bec3c8));
+  @include box-shadow(#999 0 2px 5px);
   text-shadow: 0 1px 1px #eaeaea;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #99a1a9;
@@ -77,7 +77,7 @@ a {
       padding: 6px 11px;
       @include inline-block;
       &:hover{
-        @include box-shadow(#555, 0, 0, 3px, 0, inset);
+        @include box-shadow(#555 0 0 3px 0 inset);
         //@include linear-gradient(color-stops(#aaa, #ddd));
         background: #eee;
         border-bottom: 1px solid #bbb;
@@ -108,12 +108,13 @@ a {
   color: #000;
   line-height: 18px;
   @include border-radius(3px);
-  @include linear-gradient(color-stops(#ddd, #aaa));
-  @include box-shadow(#333, 0, 2px, 4px);
+  @include background-image(linear-gradient(#ddd, #aaa));
+  @include box-shadow(#333 0 2px 4px);
   text-shadow: 0 1px 1px #fff;
   text-decoration: none;  
   @include inline-block;
   margin: 3px;
+  border: none;
   &:active {
     position: relative;
     top: 1px;
@@ -121,7 +122,7 @@ a {
   }
   &.action {
     font-weight: bold;
-    @include linear-gradient(color-stops(#268acd, #0076c4));
+    @include background-image(linear-gradient(#268acd, #0076c4));
     text-shadow: 0 -1px 1px #00558d;
     color: white;
     &:active {
@@ -164,9 +165,10 @@ a {
   margin: 0 auto;
   padding: 20px;
   @include border-radius(3px);
-  @include box-shadow(#888, 0, 0, 5px);
+  @include box-shadow(#888 0 0 5px);
   input {
-    width: 225px;
+    @include box-sizing('border-box');
+    width: 240px;
     font-size: 20px;
     padding: 5px;
     @include border-radius(2px);
@@ -174,6 +176,9 @@ a {
     background: white;
     margin: 2px 0;
     color: #555;
+    &#domain, &#master {
+      padding-right: 40px;
+    }
     &:focus {
       border-color: #0096ce;
       outline: 0;
@@ -215,19 +220,37 @@ input#secure {
 ----------------------------------*/
 
 .panel {
-  @include box-shadow(#333, 0, -2px, 5px, 0, inset);
+  @include box-shadow(#333 0 -2px 5px 0 inset);
   background: #444 image-url('noise-dk.jpg') repeat;
   border-bottom: 1px solid #222;
   color: #efefef;
   position: relative;
   top: 0;
   left: 0;
-  overflow: auto;
+  @include pie-clearfix;
   padding: 20px;
   display: none;
   font-size: 14px;
   form {
     @include clearfix;
+    width: 183px;
+    margin: 0 auto;
+    input {
+      &[type="text"], &[type="password"] {
+        @include border-radius(2px);
+        background: white;
+        margin: 2px 0;
+        padding: 6px;
+        border: 1px solid #222;
+        @include box-shadow(#333 0 2px 4px);
+        float: left;
+        &:focus {
+          border-color: #0096ce;
+          outline: 0;
+          color: #222; 
+        } 
+      }
+    }
   }
   label {
     padding: 5px; 
@@ -360,7 +383,7 @@ span.toggle {
   bottom: 0;
   background: white;
   padding: 20px 0;
-  @include box-shadow(#ddd, 0, -2px, 5px);
+  @include box-shadow(#ddd 0 -2px 5px);
   display: none;
   ul {
     padding: 0 20px;

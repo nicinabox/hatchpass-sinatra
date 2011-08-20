@@ -9,6 +9,7 @@ require 'digest/md5'
 require 'digest/sha1'
 require 'digest/sha2'
 require 'base64'
+require File.expand_path(File.dirname(__FILE__) + '/lib/config')
 
 Bundler.require
 
