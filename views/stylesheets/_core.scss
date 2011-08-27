@@ -166,6 +166,25 @@ a {
   padding: 20px;
   @include border-radius(3px);
   @include box-shadow(#888 0 0 5px);
+  #saved_domains {
+    @include box-sizing('border-box');
+    position: absolute;
+    display: none;
+    background: #fff;
+    padding: 3px;
+    @include box-shadow(#666 0 0 4px 0);
+    width: 240px;
+    li {
+      color: #333;
+      cursor: pointer;
+      padding: 5px;
+      margin: 0;
+      &:hover {
+        background: #eee;
+        color: #111;
+      }
+    }
+  }
   input {
     @include box-sizing('border-box');
     width: 240px;

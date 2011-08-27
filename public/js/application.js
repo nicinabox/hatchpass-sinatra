@@ -1,4 +1,12 @@
 $(document).ready(function() {
+  if (!localStorage.saved_domains) {
+    localStorage.saved_domains = JSON.stringify([])
+  }
+  var saved_domains = JSON.parse(localStorage.saved_domains)
+  for (var i=0, len = saved_domains.length; i < len; i++) {
+    $('#saved_domains').append("<li>"+saved_domains[i]+"</li>")
+  };
+  
   // Javascript checkboxes
   $('input[type="checkbox"]').wrap('<span class="toggle"></span>')
   $('input[type="checkbox"]').change(function() {
@@ -83,6 +91,27 @@ $(document).ready(function() {
       $(this).next('.clearinput').fadeIn(50)
     }
   })
+  
+  $('#domain').blur(function() {
+    var domains = JSON.parse(localStorage.saved_domains)
+    if ($(this).val() != "") {
+      domains.push($(this).val())
+      domains = JSON.stringify($.unique(domains))
+      localStorage.saved_domains = domains
+    }
+  });
+  
+  $('#domain').dblclick(function() {
+    $('#saved_domains').slideDown('fast')
+  });
+  
+  $('#saved_domains li').click(function() {
+    $('#domain').val($(this).text()).trigger('change').trigger('keyup')
+    $('#saved_domains').slideUp('fast')
+    $('#secret').select()
+  });
+  
+  
   $('.clearinput').click(function() {
     $(this).prev('input').val('').focus();
     $(this).fadeOut(50);
