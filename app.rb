@@ -54,7 +54,7 @@ def version_1 data
   key_num = hash.match(/\d/)[0].to_i
   secret = hash.split(//)
   this_upper = true
-  
+  puts "--"
   secret.each_with_index do |item, num|
     if item.match(/[a-zA-Z]/) # Letters
         if data['settings']['caps'] == "true" && !this_upper
@@ -66,14 +66,18 @@ def version_1 data
     else # Numbers
       if data['settings']['symbols'] == "true"
         secret_idx = num + key_num / 3
+        p secret[secret_idx]
         sym_idx = nums + num + (key_num * nums) + (1 * num)
+        # puts sym_idx
         unless secret[secret_idx].nil? or secret_idx < 0 or sym_idx < 0 or symbols[sym_idx].nil?
+          # p symbols[sym_idx]
           secret[secret_idx] += symbols[sym_idx]
         end
       end
       nums += 1
     end
   end
+  p secret
   secret.join[0...data['settings']['length'].to_i]
 end
 
